@@ -34,4 +34,4 @@ def chat():
         return jsonify({"reply": "I couldn't understand your question. Please ask in this format: 'How many murder cases were recorded in Gauteng for 2024?'"})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
