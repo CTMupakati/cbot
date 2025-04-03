@@ -1,1 +1,4 @@
-echo "flask\npandas\nopenpyxl" > requirements.txt
+flask
+pandas
+openpyxl
+gunicorn
