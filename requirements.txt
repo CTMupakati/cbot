@@ -1,0 +1,1 @@
+echo "flask\npandas\nopenpyxl" > requirements.txt
