@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # ← ADD THIS LINE
 import json
 
 app = Flask(__name__)
+CORS(app)  # ← ADD THIS LINE TO ENABLE CORS FOR ALL ROUTES
 
-# Load the JSON file
+# Load your JSON data
 with open('data.json') as f:
     data = json.load(f)
 
@@ -13,7 +15,6 @@ def query():
     category = req.get('category', '').lower()
     response = {}
 
-    # Search the JSON for matching crime category
     for record in data:
         if record['CRIME CATEGORY'].lower() == category:
             response = record
@@ -22,7 +23,7 @@ def query():
     if response:
         return jsonify({"status": "success", "data": response})
     else:
-        return jsonify({"status": "error", "message": "Crime category not found"}), 404
+        return jsonify({"status": "error", "message": "Category not found"}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
